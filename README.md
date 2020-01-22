@@ -22,10 +22,10 @@ Maven repository coming soon.
 
 The shape system:
 
--   '#' = the content
+-   '#' = Content
 -   '<' = Previous page
 -   '>' = Next page
--   'x' (or any other char) = the border
+-   'x' (or any other char) = Border
 
 **The last roll should be ignored during the shape process, making the shape having a maximum of 5 rows.**
 
@@ -49,7 +49,8 @@ PaginatedGUI gui = new PaginatedGUIBuilder(
             .setHotbarButton(
                     (byte) 4,
                     new ItemButton(Material.COMPASS, 1, "§cFechar")
-                            .addAction(ClickType.LEFT, (InventoryClickEvent e) -> e.getWhoClicked().closeInventory())
+                        .addAction(ClickType.LEFT, (InventoryClickEvent e) ->
+                                e.getWhoClicked().closeInventory())
             )
 
             // Set the item for the next page button.
