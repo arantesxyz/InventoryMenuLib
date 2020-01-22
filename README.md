@@ -73,6 +73,10 @@ PaginatedGUI gui = new PaginatedGUIBuilder(
             gui.show(player);
 ```
 
+## TODO
+
+-   Fix issue with draggin itens to empy spaces
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
