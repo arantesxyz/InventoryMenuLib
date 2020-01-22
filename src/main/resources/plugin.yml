@@ -1,0 +1,10 @@
+name: ${artifactId}
+version: ${version}
+description: ${description}
+author: ${author}
+website: ${url}
+main: ${mainClass}
+
+commands:
+  menu:
+    description: Just a test command
