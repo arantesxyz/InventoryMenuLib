@@ -147,7 +147,7 @@ public class PaginatedGUIBuilder {
                 if (current == '#') {
                     if (currentItem < content.size()) {
                         ItemButton cItem = content.get(currentItem++);
-                        if (cItem.getDefaultAction() == null) {
+                        if (cItem.getDefaultAction() == null && contentDefaultAction != null) {
                             cItem.setDefaultAction(contentDefaultAction);
                         }
 
