@@ -22,10 +22,10 @@ Maven repository coming soon.
 
 The shape system:
 
--   # = the content
--   < = Previous page
--   > = Next page
--   x (or any other char) = the border
+-   '#' = the content
+-   '<' = Previous page
+-   '>' = Next page
+-   'x' (or any other char) = the border
 
 **The last roll should be ignored during the shape process, making the shape having a maximum of 5 rows.**
 
