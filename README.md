@@ -61,7 +61,7 @@ The shape system:
 // Create the menu with the name and the shape.
 // {page} is replaced by the page number
 PaginatedGUI gui = new PaginatedGUIBuilder(
-                    "§8Menu | Página: {page}",
+                    "§8Menu | page: {page}",
                     "xxxxxxxxx" +
                     "x#######x" +
                     "<#######>" +
@@ -71,21 +71,21 @@ PaginatedGUI gui = new PaginatedGUIBuilder(
 
             // Define the material of the border and the name.
             // You can also define actions if you want the border to be clickable
-            .setBorder(new ItemButton(Material.STAINED_GLASS_PANE, 1, "§eBorda", ""))
+            .setBorder(new ItemButton(Material.STAINED_GLASS_PANE, 1, "§eBorder", ""))
 
             // Set an item in the 4 position of the hotbar (lastrow)
             .setHotbarButton(
                     (byte) 4,
-                    new ItemButton(Material.COMPASS, 1, "§cFechar")
+                    new ItemButton(Material.COMPASS, 1, "§cClose")
                         .addAction(ClickType.LEFT, (InventoryClickEvent e) ->
                                 e.getWhoClicked().closeInventory())
             )
 
             // Set the item for the next page button.
-            .setNextPageItem(Material.ARROW, 1, "§6Próxima página")
+            .setNextPageItem(Material.ARROW, 1, "§6Next page")
 
             // Set the item for the previous page buttom.
-            .setPreviousPageItem(Material.ARROW, 1, "§6Página anterior")
+            .setPreviousPageItem(Material.ARROW, 1, "§6Previous page")
 
             // Set the content
             .setContent(
