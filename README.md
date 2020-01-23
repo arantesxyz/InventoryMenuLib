@@ -9,7 +9,7 @@ This is a simple and lightweight library to help developers creating Single or P
 ### Maven
 
 ```xml
-<!-- This adds the Aranes Maven repository to the build -->
+<!-- This adds the Arantes Maven repository to the build -->
 <repositories>
         <repository>
                 <id>arantes-repo</id>
