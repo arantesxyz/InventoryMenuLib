@@ -6,15 +6,31 @@ This is a simple and lightweight library to help developers creating Single or P
 
 ## Getting your version
 
-You'll need maven to compile, or you can simple download a release [here](https://github.com/arantesxyz/InventoryMenuLib/releases).
+### Maven
 
-```bash
-mvn clean package
+```xml
+<!-- This adds the Aranes Maven repository to the build -->
+<repositories>
+        <repository>
+                <id>arantes-repo</id>
+                <url>https://mvn.arantes.dev/repository/maven-releases/</url>
+        </repository>
+</repositories>
+
+<dependencies>
+        <!-- This adds the InventoryMenuLib artifact to the build -->
+        <dependency>
+            <groupId>dev.arantes</groupId>
+            <artifactId>InventoryMenuLib</artifactId>
+            <version>1.0</version>
+        </dependency>
+</dependencies>
 ```
 
-After you have the jar just put as a dependency in your project.
+### Jar dependency
 
-Maven repository coming soon.
+Download a jar release [here](https://github.com/arantesxyz/InventoryMenuLib/releases).
+After you have the jar just put as a dependency in your project.
 
 ## Usage
 
