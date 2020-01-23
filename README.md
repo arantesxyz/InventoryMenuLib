@@ -39,7 +39,7 @@ The shape system:
 -   '>' = Next page
 -   'x' (or any other char) = Border
 
-**The last roll should be ignored during the shape process, making the shape having a maximum of 5 rows.**
+**The last row should be ignored during the shape process, making the shape having a maximum of 5 rows.**
 
 ```java
 // Create the menu with the name and the shape.
