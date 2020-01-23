@@ -15,12 +15,15 @@ public class InventoryListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        if (!(event.getWhoClicked() instanceof Player)) return;
-        if (event.getCurrentItem() == null) return;
+        if (!(event.getWhoClicked() instanceof Player) || event.getCurrentItem() == null) {
+            return;
+        }
 
-        if (event.getClickedInventory().getHolder() != null &&
-                event.getClickedInventory().getHolder() instanceof InventoryGUI) {
-            final InventoryGUI inventoryGUI = (InventoryGUI) event.getClickedInventory().getHolder();
+        if (event.getInventory().getHolder() != null &&
+                event.getInventory().getHolder() instanceof InventoryGUI) {
+            event.setCancelled(true);
+
+            final InventoryGUI inventoryGUI = (InventoryGUI) event.getInventory().getHolder();
             inventoryGUI.onClick(event);
         }
     }
