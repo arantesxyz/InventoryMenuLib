@@ -12,7 +12,7 @@
 
     <properties>
         <author>Gustavo Arantes</author>
-        <mainClass>dev.arantes.inventorymenulib.PluginExample</mainClass>
+        <mainClass>dev.arantes.inventorymenulib.Plugin</mainClass>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
