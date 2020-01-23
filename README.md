@@ -117,7 +117,7 @@ gui.show(player);
 
 ## TODO
 
--   Allow user to user it's own inventory while the CustomInventory is opened.
+-   Allow user to use it's own inventory while the CustomInventory is open.
 
 ## Contributing
 
