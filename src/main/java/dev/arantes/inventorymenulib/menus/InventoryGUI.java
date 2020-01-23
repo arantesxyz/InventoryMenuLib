@@ -40,8 +40,6 @@ public class InventoryGUI implements InventoryHolder {
     }
 
     public void onClick(InventoryClickEvent event) {
-        event.setCancelled(true);
-
         if (!callbacks.containsKey(event.getRawSlot())) {
             return;
         }
