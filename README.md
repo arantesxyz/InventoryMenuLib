@@ -4,6 +4,15 @@
 
 This is a simple and lightweight library to help developers creating Single or Paginated GUI inventories for Spigot.
 
+### Why to use it?
+
+-   Automated multi-page inventories builder
+-   Single inventories
+-   Individual actions for each ClickType
+-   Default action for non registered ClickTypes
+-   Easy to use
+-   Open Source
+
 ## Installation & Usage Tutorial
 
 -   [English](https://github.com/arantesxyz/InventoryMenuLib/wiki/Installation-English)
