@@ -125,4 +125,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 
-Soon
+See [LICENSE](https://github.com/arantesxyz/InventoryMenuLib/blob/master/LICENSE) page for more info.
