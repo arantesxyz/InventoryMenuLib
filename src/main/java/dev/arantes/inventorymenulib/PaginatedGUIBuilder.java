@@ -145,7 +145,7 @@ public class PaginatedGUIBuilder {
             for (int i = 0; i < shape.length; i++) {
                 final char current = shape[i];
 
-                if (current == '>') {
+                if (current == '>' && pageI < (amountOfPages-1)) {
                     final ItemButton btn = new ItemButton(nextPageItem);
                     btn.addAction(ClickType.RIGHT, (InventoryClickEvent e) ->
                             paginatedGUI.showNext((Player) e.getWhoClicked()));
@@ -157,7 +157,7 @@ public class PaginatedGUIBuilder {
                     continue;
                 }
 
-                if (current == '<') {
+                if (current == '<' && pageI != 0) {
                     final ItemButton btn = new ItemButton(previousPageItem);
                     btn.addAction(ClickType.RIGHT, (InventoryClickEvent e) ->
                             paginatedGUI.showPrevious((Player) e.getWhoClicked()));
