@@ -26,12 +26,15 @@
 package dev.arantes.inventorymenulib.buttons;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.inventory.ClickType;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ItemButton {
@@ -48,6 +51,10 @@ public class ItemButton {
         this.actions = new HashMap<>();
     }
 
+    public ItemButton(Material material, String name, String... lore) {
+        this(material, 1, name, lore);
+    }
+
     public ItemButton(Material material, int amount, String name, String... lore) {
         this.actions = new HashMap<>();
         setItem(material, amount, name, lore);
@@ -59,13 +66,69 @@ public class ItemButton {
     }
 
     public ItemButton setItem(Material material, int amount, String name, String... lore) {
-        ItemStack item = new ItemStack(material, amount);
-        ItemMeta meta = item.getItemMeta();
+        final ItemStack item = new ItemStack(material, amount);
+        final ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(name);
         meta.setLore(Arrays.asList(lore));
         item.setItemMeta(meta);
 
         this.item = item;
+        return this;
+    }
+
+    public ItemButton setName(String name) {
+        final ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
+        return this;
+    }
+
+    public ItemButton setLore(String... lines) {
+        final ItemMeta meta = item.getItemMeta();
+        meta.setLore(Arrays.asList(lines));
+        item.setItemMeta(meta);
+        return this;
+    }
+
+    public ItemButton setLore(int pos, String line) {
+        final ItemMeta meta = item.getItemMeta();
+        final List<String> lores = meta.getLore();
+
+        if (lores.get(pos) != null) {
+            lores.set(pos, line);
+
+            meta.setLore(lores);
+            item.setItemMeta(meta);
+        }
+        return this;
+    }
+
+    public ItemButton addLore(String... lines) {
+        final ItemMeta meta = item.getItemMeta();
+        final List<String> lore = meta.getLore();
+
+        lore.addAll(Arrays.asList(lines));
+
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return this;
+    }
+
+    public ItemButton glow(boolean v) {
+        final ItemMeta meta = item.getItemMeta();
+
+        if (v) {
+            item.addUnsafeEnchantment(
+                    item.getType()!= Material.BOW ? Enchantment.ARROW_INFINITE : Enchantment.LUCK,
+                    10
+            );
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        }else {
+            item.removeEnchantment(item.getType()!= Material.BOW ? Enchantment.ARROW_INFINITE : Enchantment.LUCK);
+            meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+        }
+
+        item.setItemMeta(meta);
         return this;
     }
 
