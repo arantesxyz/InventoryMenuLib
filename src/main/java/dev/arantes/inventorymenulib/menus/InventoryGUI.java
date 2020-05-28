@@ -27,6 +27,7 @@ package dev.arantes.inventorymenulib.menus;
 
 import dev.arantes.inventorymenulib.buttons.ClickAction;
 import dev.arantes.inventorymenulib.buttons.ItemButton;
+import dev.arantes.inventorymenulib.utils.InventorySize;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -39,10 +40,13 @@ public class InventoryGUI implements InventoryHolder {
     private final Inventory inv;
     private Map<Integer, ItemButton> callbacks;
 
+    public InventoryGUI(final String title, final InventorySize size) {
+        this(title, size.getSlotsAmount());
+    }
+
     public InventoryGUI(final String title, final int size) {
         inv = Bukkit.createInventory(this, size, title);
         callbacks = new HashMap<>();
-
     }
 
     @Override
@@ -57,6 +61,7 @@ public class InventoryGUI implements InventoryHolder {
 
     public void removeButton(int slot) {
         inv.clear(slot);
+        callbacks.remove(slot);
     }
 
     public void show(Player player) {
