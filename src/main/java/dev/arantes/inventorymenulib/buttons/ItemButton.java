@@ -27,15 +27,14 @@ package dev.arantes.inventorymenulib.buttons;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.MaterialData;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ItemButton {
     private ItemStack item;
@@ -76,6 +75,16 @@ public class ItemButton {
         return this;
     }
 
+    public ItemButton setDamage(short damage) {
+        item.setDurability(damage);
+        return this;
+    }
+
+    public ItemButton setData(MaterialData data) {
+        item.setData(data);
+        return this;
+    }
+
     public ItemButton setName(String name) {
         final ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(name);
@@ -90,9 +99,20 @@ public class ItemButton {
         return this;
     }
 
+    public ItemButton setLore(List<String> lines) {
+        final ItemMeta meta = item.getItemMeta();
+        meta.setLore(lines);
+        item.setItemMeta(meta);
+        return this;
+    }
+
     public ItemButton setLore(int pos, String line) {
         final ItemMeta meta = item.getItemMeta();
-        final List<String> lores = meta.getLore();
+        List<String> lores = new ArrayList<>();
+
+        if (meta.hasLore()) {
+            lores = meta.getLore();
+        }
 
         if (lores.get(pos) != null) {
             lores.set(pos, line);
