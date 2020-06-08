@@ -39,6 +39,7 @@ import java.util.Map;
 public class InventoryGUI implements InventoryHolder {
     private final Inventory inv;
     private Map<Integer, ItemButton> callbacks;
+    private boolean defaultCancell = false;
 
     public InventoryGUI(final String title, final InventorySize size) {
         this(title, size.getSlotsAmount());
@@ -68,10 +69,19 @@ public class InventoryGUI implements InventoryHolder {
         player.openInventory(inv);
     }
 
+    public boolean isDefaultCancell() {
+        return defaultCancell;
+    }
+
+    public void setDefaultCancell(boolean defaultCancell) {
+        this.defaultCancell = defaultCancell;
+    }
+
     public void onClick(InventoryClickEvent event) {
         if (!callbacks.containsKey(event.getRawSlot())) {
             return;
         }
+        event.setCancelled(defaultCancell);
 
         final ClickAction action = callbacks.get(event.getRawSlot()).getAction(event.getClick());
         if (action != null) {
