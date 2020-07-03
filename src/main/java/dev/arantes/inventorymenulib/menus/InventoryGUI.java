@@ -33,6 +33,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ public class InventoryGUI implements InventoryHolder {
     private final Inventory inv;
     private Map<Integer, ItemButton> callbacks;
     private boolean defaultCancell = false;
+    private boolean defaultAllCancell = false;
 
     public InventoryGUI(final String title, final InventorySize size) {
         this(title, size.getSlotsAmount());
@@ -77,11 +79,20 @@ public class InventoryGUI implements InventoryHolder {
         this.defaultCancell = defaultCancell;
     }
 
+    public boolean isDefaultAllCancell() {
+        return defaultAllCancell;
+    }
+
+    public void setDefaultAllCancell(boolean defaultAllCancell) {
+        this.defaultAllCancell = defaultAllCancell;
+    }
+
     public void onClick(InventoryClickEvent event) {
         if (!callbacks.containsKey(event.getRawSlot())) {
             return;
         }
-        event.setCancelled(defaultCancell);
+        if (defaultCancell || defaultAllCancell)
+            event.setCancelled(true);
 
         final ClickAction action = callbacks.get(event.getRawSlot()).getAction(event.getClick());
         if (action != null) {
