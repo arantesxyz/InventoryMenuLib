@@ -6,7 +6,7 @@
 
     <groupId>dev.arantes</groupId>
     <artifactId>InventoryMenuLib</artifactId>
-    <version>2.2</version>
+    <version>2.3</version>
     <description>A nice and easy lib to create Inventories Menus.</description>
     <url>https://github.com/arantesxyz/InventoryMenuLib</url>
 
