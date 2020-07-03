@@ -25,6 +25,7 @@
 
 package dev.arantes.inventorymenulib;
 
+import com.google.common.collect.Maps;
 import dev.arantes.inventorymenulib.buttons.ClickAction;
 import dev.arantes.inventorymenulib.buttons.ItemButton;
 import dev.arantes.inventorymenulib.menus.InventoryGUI;
@@ -38,6 +39,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("unused")
 public class PaginatedGUIBuilder {
@@ -49,6 +51,9 @@ public class PaginatedGUIBuilder {
     private ItemButton borderButton;
     private ItemStack nextPageItem;
     private ItemStack previousPageItem;
+    private Map<Integer, ItemButton> buttons = Maps.newHashMap();
+    private boolean defaultCancell = false;
+    private boolean defaultAllCancell = false;
 
     public PaginatedGUIBuilder(String name, String shape) {
         this.name = name;
@@ -123,6 +128,27 @@ public class PaginatedGUIBuilder {
         return this;
     }
 
+    public boolean isDefaultCancell() {
+        return defaultCancell;
+    }
+
+    public void setDefaultCancell(boolean defaultCancell) {
+        this.defaultCancell = defaultCancell;
+    }
+
+    public boolean isDefaultAllCancell() {
+        return defaultAllCancell;
+    }
+
+    public void setDefaultAllCancell(boolean defaultAllCancell) {
+        this.defaultAllCancell = defaultAllCancell;
+    }
+
+    public PaginatedGUIBuilder setButton(int slot, ItemButton button) {
+        buttons.put(slot, button);
+        return this;
+    }
+
     public PaginatedGUI build() {
         int contentSize = 0;
         for (char c : shape) {
@@ -141,6 +167,11 @@ public class PaginatedGUIBuilder {
                     name.replace("{page}", pageI + ""),
                     (shape.length + 9)
             );
+
+            buttons.forEach(page::setButton);
+
+            page.setDefaultAllCancell(defaultAllCancell);
+            page.setDefaultCancell(defaultCancell);
 
             for (int i = 0; i < shape.length; i++) {
                 final char current = shape[i];

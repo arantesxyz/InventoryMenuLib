@@ -48,6 +48,9 @@ public class InventoryListener implements Listener {
                 event.getInventory().getHolder() instanceof InventoryGUI) {
 
             final InventoryGUI inventoryGUI = (InventoryGUI) event.getInventory().getHolder();
+
+            event.setCancelled(inventoryGUI.isDefaultAllCancell());
+
             inventoryGUI.onClick(event);
         }
     }
