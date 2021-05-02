@@ -72,6 +72,13 @@
             </plugin>
         </plugins>
     </build>
-
+         
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub arantesxyz Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/arantesxyz/InventoryMenuLib</url>
+        </repository>
+    </distributionManagement>
 
 </project>
